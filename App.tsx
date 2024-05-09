@@ -1,13 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
+import { config } from '@tamagui/config/v3';
+import { TamaguiProvider, View, createTamagui } from '@tamagui/core';
 import { StyleSheet } from 'react-native';
-import { TamaguiProvider, Text, View } from 'tamagui';
+
+import HomeScreen from './src/screens/Home/Home';
+
+
+const tamaguiConfig = createTamagui(config)
+
+// make TypeScript type everything based on your config
+type Conf = typeof tamaguiConfig
+declare module '@tamagui/core' {
+  interface TamaguiCustomConfig extends Conf {}
+}
 
 export default function App() {
   return (
-    <TamaguiProvider>
-      <View style={styles.container}>
-        <Text>WEGOAL app!</Text>
-        <StatusBar style="auto" />
+    <TamaguiProvider config={tamaguiConfig}>
+      <View
+        style={styles.container}
+      >
+        <HomeScreen />
       </View>
     </TamaguiProvider>
   );
@@ -19,5 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 16,
   },
 });
