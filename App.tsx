@@ -2,7 +2,7 @@ import { config } from '@tamagui/config/v3';
 import { TamaguiProvider, View, createTamagui } from '@tamagui/core';
 import { StyleSheet } from 'react-native';
 
-import HomeScreen from './src/screens/Home/Home';
+import HomeScreen from './app/(home)/Home';
 
 
 const tamaguiConfig = createTamagui(config)
